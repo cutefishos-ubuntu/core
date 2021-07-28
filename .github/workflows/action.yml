@@ -18,4 +18,4 @@ jobs:
         upstream_repo: https://github.com/cutefishos/core.git
         upstream_branch: main
         local_branch: main
-	github_token: ${{ secrets.GITHUB_TOKEN }}
+	github_token: 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
