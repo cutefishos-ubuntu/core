@@ -34,17 +34,27 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      
-      - name: Fetch upstream Action
-  # You may pin to the exact commit or the version.
-  # uses: 135e2/sync-upstream-repo@f12f0aa22ad51a1a2677f638da364c4e5525adb0
-  uses: 135e2/sync-upstream-repo@v0.1.5
-  with:
-    # URL of gitHub public upstream repo
-    upstream_repo: https://github.com/cutefishos/core.git
-    # repo branch to fetch
-    upstream_branch: main
-    # local repo branch
-    local_branch: main
-    # github push token
-    github_token: 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
+       
+name: CI
+
+on: 
+  schedule:
+    - cron: "15 14 * * *"
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Fetch upstream
+      uses: 135e2/sync-upstream-repo@v0.1.5
+      with:
+      #Git upstream repo
+        upstream_repo: https://github.com/cutefishos/core.git
+        upstream_branch: main
+        local_branch: main
+	github_token: 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
+
+
+ 
