@@ -1,19 +1,13 @@
-- name: build-deb-action
+- name: Build Debian package
   # You may pin to the exact commit or the version.
-  # uses: jiro4989/build-deb-action@ed23fc45f951b17be06086bf513885c878e5483c
-  uses: jiro4989/build-deb-action@v2
+  # uses: dawidd6/action-debian-package@6093a4f3549c0713f7f226313c36c799fd2194bf
+  uses: dawidd6/action-debian-package@v1.4.0
   with:
-    # Package name of debian package.
-    package: core
-    # Directory of release files.
-    package_root:  
-    # Package maintainer name.
-    maintainer: Titenko
-    # Package version.
-    version: 0.3-1
-    # Package dependencies.
-    depends: # optional, default is none
-    # Package architecture.
-    arch: # optional, default is amd64
-    # Package description.
-    desc: # optional, default is no description
+    # Target CPU architecture
+    cpu_architecture: # optional, default is amd64
+    # Directory where Debian sources are, relative to workspace
+    source_directory: # optional, default is ./
+    # Directory where build artifacts will be placed, relative to workspace
+    artifacts_directory: # optional, default is ./
+    # OS distribution name, value from `debian/changelog` is used if not defined
+    os_distribution: # optional
