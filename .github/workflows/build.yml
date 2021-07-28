@@ -1,29 +1,27 @@
-name: build
+name: Build
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
 
-      - name: create sample script
-        run: |
-          mkdir -p .debpkg/usr/bin
-          mkdir -p .debpkg/usr/lib/samplescript
-          echo -e "echo sample" > .debpkg/usr/bin/samplescript
-          chmod +x .debpkg/usr/bin/samplescript
-          echo -e "a=1" > .debpkg/usr/lib/samplescript/samplescript.conf
-      - uses: jiro4989/build-deb-action@v2
-        with:
-          package: samplescript
-          package_root: .debpkg
-          maintainer: your_name
-          version: ${{ github.ref }} # refs/tags/v*.*.*
-          arch: 'amd64'
-          depends: 'libc6 (>= 2.2.1), git'
-          desc: 'this is sample package.'
+    steps:
+    - name: Checkout Source
+      uses: actions/checkout@v2
+      
+    - name: Update repository
+      run: sudo apt-get update -y
+      
+    - name: Install the basic dev packages
+      run: sudo apt-get install -y equivs curl git devscripts lintian build-essential automake autotools-dev cmake g++
+
+    - name: Install build dependencies
+      run: sudo mk-build-deps -i -t "apt-get --yes" -r
+      
+    - name: Build
+      run: mkdir build; cd build; cmake .. ; make -j$(nproc);
