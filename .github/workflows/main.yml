@@ -1,19 +1,20 @@
 - name: build-deb-action
   # You may pin to the exact commit or the version.
-  # uses: jiro4989/build-deb-action@ed23fc45f951b17be06086bf513885c878e5483c
-  uses: jiro4989/build-deb-action@v2
+  # uses: jiro4989/build-deb-action@59ff85390fe87391c9d7b24aa764d7d10d9a81c9
+  uses: jiro4989/build-deb-action@v2.1.0
   with:
-    # Package name of debian package.
+    # Working directory relative to the root directory.
     package: 
-    # Directory of release files.
+    # Working directory relative to the root directory.
     package_root: 
-    # Package maintainer name.
+    # Report level for reviewdog [info,warning,error]
     maintainer: 
-    # Package version.
+    # Reporter of reviewdog command [github-pr-check,github-pr-review].
     version: 
-    # Package dependencies.
-    depends: # optional, default is none
-    # Package architecture.
+    # Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
+Default is added.
+
     arch: # optional, default is amd64
-    # Package description.
-    desc: # optional, default is no description
+    # description
+
+    desc: # optional, default is 
