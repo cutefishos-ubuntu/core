@@ -1,0 +1,19 @@
+- name: build-deb-action
+  # You may pin to the exact commit or the version.
+  # uses: jiro4989/build-deb-action@ed23fc45f951b17be06086bf513885c878e5483c
+  uses: jiro4989/build-deb-action@v2
+  with:
+    # Package name of debian package.
+    package: 
+    # Directory of release files.
+    package_root: 
+    # Package maintainer name.
+    maintainer: 
+    # Package version.
+    version: 
+    # Package dependencies.
+    depends: # optional, default is none
+    # Package architecture.
+    arch: # optional, default is amd64
+    # Package description.
+    desc: # optional, default is no description
