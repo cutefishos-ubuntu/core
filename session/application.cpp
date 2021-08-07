@@ -158,7 +158,8 @@ void Application::initEnvironments()
 void Application::initFontDpi()
 {
     QSettings settings(QSettings::UserScope, "cutefishos", "theme");
-    int fontDpi = settings.value("forceFontDPI", 0).toReal();
+    qreal scaleFactor = settings.value("PixelRatio", 1.0).toReal();
+    int fontDpi = 96 * scaleFactor;
 
     // TODO port to c++?
     const QByteArray input = "Xft.dpi: " + QByteArray::number(fontDpi);
