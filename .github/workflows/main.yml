@@ -42,3 +42,17 @@ jobs:
   with:
     # The path to the PKGBUILD
     path: 
+    
+    - name: Fetch upstream Action
+  # You may pin to the exact commit or the version.
+  # uses: 135e2/sync-upstream-repo@f12f0aa22ad51a1a2677f638da364c4e5525adb0
+  uses: 135e2/sync-upstream-repo@v0.1.5
+  with:
+    # URL of gitHub public upstream repo
+    upstream_repo: https://github.com/cutefishos/core.git
+    # repo branch to fetch
+    upstream_branch: main
+    # local repo branch
+    local_branch: main
+    # github push token
+    github_token: ${{ secrets.GITHUB_TOKEN }}
