@@ -4,4 +4,4 @@
   uses: ouuan/pkgbuild-action@v1.0.0
   with:
     # The path to the PKGBUILD
-    path: core/.github/workflows/
+    path: ${{ steps.build-package.outputs.pkgfile }}
