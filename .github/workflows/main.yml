@@ -1,0 +1,7 @@
+- name: PKGBUILD Action
+  # You may pin to the exact commit or the version.
+  # uses: ouuan/pkgbuild-action@25683ebe60f442d63db36739d374a5e08071250f
+  uses: ouuan/pkgbuild-action@v1.0.0
+  with:
+    # The path to the PKGBUILD
+    path: 
