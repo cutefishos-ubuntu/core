@@ -6,7 +6,7 @@
     <message>
         <location filename="../main.qml" line="67"/>
         <source>Shutdown</source>
-        <translation>Ausschalten</translation>
+        <translation>Herunterfahren</translation>
     </message>
     <message>
         <location filename="../main.qml" line="75"/>
@@ -23,5 +23,8 @@
         <source>Suspend</source>
         <translation>Bereitschaft</translation>
     </message>
+</context>
+<context>
+    <name></name>
 </context>
 </TS>
