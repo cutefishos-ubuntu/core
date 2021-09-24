@@ -26,17 +26,17 @@
     <message>
         <location filename="../battery/battery.cpp" line="268"/>
         <source>%1d</source>
-        <translation type="unfinished"></translation>
+        <translation>%1d</translation>
     </message>
     <message>
         <location filename="../battery/battery.cpp" line="274"/>
         <source>%1h</source>
-        <translation type="unfinished"></translation>
+        <translation>%1h</translation>
     </message>
     <message>
         <location filename="../battery/battery.cpp" line="281"/>
         <source>%1m</source>
-        <translation type="unfinished"></translation>
+        <translation>%1m</translation>
     </message>
     <message>
         <location filename="../battery/battery.cpp" line="290"/>
@@ -61,7 +61,7 @@
     <message>
         <location filename="../battery/battery.cpp" line="319"/>
         <source>%1 ago</source>
-        <translation type="unfinished"></translation>
+        <translation>před %1</translation>
     </message>
     <message>
         <source>ago</source>
@@ -98,7 +98,7 @@
         <location filename="../battery/upowerdevice.cpp" line="93"/>
         <source>Lead Acid</source>
         <comment>battery technology</comment>
-        <translation type="unfinished">Olověná</translation>
+        <translation>Olověná</translation>
     </message>
     <message>
         <location filename="../battery/upowerdevice.cpp" line="95"/>
@@ -110,13 +110,13 @@
         <location filename="../battery/upowerdevice.cpp" line="97"/>
         <source>Nickel Metal Hydride</source>
         <comment>battery technology</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nikl-metal-hydridová</translation>
     </message>
     <message>
         <location filename="../battery/upowerdevice.cpp" line="99"/>
         <source>Unknown</source>
         <comment>battery technology</comment>
-        <translation>Neznámý</translation>
+        <translation>Neznámá</translation>
     </message>
 </context>
 </TS>
