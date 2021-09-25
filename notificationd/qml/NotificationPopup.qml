@@ -27,16 +27,14 @@ import Cutefish.Notification 1.0
 
 Window {
     id: control
-
     flags: Qt.WindowDoesNotAcceptFocus | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.Popup
-
     width: 400
     height: 70
     color: "transparent"
-
     visible: false
-
     onVisibleChanged: if (visible) timer.restart()
+
+    property int defaultTimeout: 7000
 
     FishUI.WindowShadow {
         view: control
@@ -62,10 +60,17 @@ Window {
         id: _mouseArea
         z: 999
         anchors.fill: parent
-        onClicked: notificationsModel.close(model.notificationId)
         hoverEnabled: true
         onEntered: timer.stop()
         onExited: timer.restart()
+
+        onClicked: {
+            if (model.hasDefaultAction) {
+                notificationsModel.invokeDefaultAction(model.notificationId)
+            }
+
+            notificationsModel.close(model.notificationId)
+        }
     }
 
     RowLayout {
@@ -118,21 +123,44 @@ Window {
         }
     }
 
-//    Image {
-//        anchors.top: parent.top
-//        anchors.right: parent.right
-//        anchors.topMargin: FishUI.Units.smallSpacing / 2
-//        anchors.rightMargin: FishUI.Units.smallSpacing
-//        width: 24
-//        height: 24
-//        source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/close.svg"
-//        sourceSize: Qt.size(width, height)
-//        visible: _mouseArea.containsMouse
-//    }
+    Image {
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.topMargin: FishUI.Units.smallSpacing / 2
+        anchors.rightMargin: FishUI.Units.smallSpacing
+        width: 24
+        height: 24
+        source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/close.svg"
+        sourceSize: Qt.size(width, height)
+        visible: _mouseArea.containsMouse || _closeBtnArea.containsMouse
+        z: 9999
+
+        Rectangle {
+            property color hoveredColor: FishUI.Theme.darkMode ? Qt.lighter(FishUI.Theme.backgroundColor, 2)
+                                                           : Qt.darker(FishUI.Theme.backgroundColor, 1.2)
+            property color pressedColor: FishUI.Theme.darkMode ? Qt.lighter(FishUI.Theme.backgroundColor, 1.5)
+                                                             : Qt.darker(FishUI.Theme.backgroundColor, 1.3)
+
+            z: -1
+            anchors.fill: parent
+            color: _closeBtnArea.pressed ? pressedColor : _closeBtnArea.containsMouse ? hoveredColor : "transparent"
+            radius: height / 2
+        }
+
+        MouseArea {
+            id: _closeBtnArea
+            anchors.fill: parent
+            hoverEnabled: true
+            onClicked: {
+                notificationsModel.close(model.notificationId)
+            }
+        }
+    }
 
     Timer {
         id: timer
-        interval: 5000
+        interval: control.defaultTimeout
+
         onTriggered: {
             notificationsModel.close(model.notificationId)
         }
